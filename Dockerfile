@@ -26,6 +26,7 @@ RUN set -x \
     && touch ${LOG_PREFIX}/error.log \
     && ln -sf /dev/stdout ${LOG_PREFIX}/access.log \
     && ln -sf /dev/stderr ${LOG_PREFIX}/error.log \
+    && curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
        openssh-client \
