@@ -83,18 +83,8 @@ RUN set -x \
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY supervisor/supervisord/supervisord.conf /etc/supervisor/supervisord.conf
-COPY supervisor/supervisord/conf.d/ /etc/supervisor/conf.d/
-COPY script /script
-COPY apache2 /apache2-files
 
-RUN chmod +x /script/docker-entrypoint.sh \
-    && chmod +x /script/supervisor.sh \
-    && cp /apache2-files/conf-enabled/php-fpm.conf /etc/apache2/conf-enabled/php-fpm.conf \
-    && cp /apache2-files/apache2.conf /etc/apache2/apache2.conf \
-    && cp /apache2-files/sites-enabled/000-default.conf /etc/apache2/sites-enabled/000-default.conf \
-    && ln -sf /dev/stdout ${APACHE_LOG_DIR}/access.log \
+RUN ln -sf /dev/stdout ${APACHE_LOG_DIR}/access.log \
     && ln -sf /dev/stderr ${APACHE_LOG_DIR}/error.log
 
 EXPOSE 80
-
-ENTRYPOINT ["/script/docker-entrypoint.sh"]
