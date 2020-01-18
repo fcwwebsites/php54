@@ -62,8 +62,8 @@ RUN set -x \
        fileinfo \
        curl \
        sockets \
-    && pecl install redis-5.0.2  \
-    && pecl install memcached-3.1.4  \
+    && pecl install redis-4.3.0  \
+    && pecl install memcached-2.2.0  \
     && docker-php-ext-enable redis  \
     && docker-php-ext-enable memcached \
     && apt-get -y autoremove \
