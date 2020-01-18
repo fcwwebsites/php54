@@ -35,7 +35,6 @@ RUN set -x \
        libxml2-dev \
        wget \
        nodejs \
-       npm \
        ruby-sass \
        apache2 \
        nano \
