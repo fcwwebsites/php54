@@ -43,6 +43,8 @@ RUN set -x \
        libpng-dev \
        libcurl4-gnutls-dev \
        libonig-dev \
+       libgmp-dev \
+    && ln -s /usr/include/x86_64-linux-gnu/gmp.h /usr/include/gmp.h
     && docker-php-ext-install mbstring \
        mysqli \
        pdo \
